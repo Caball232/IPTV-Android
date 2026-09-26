@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">StreamVault</string>
+    <string name="default_server_url">https://architectural-entry-shops-violations.trycloudflare.com</string>
+    <string name="server_url_prompt">Enter StreamVault Server URL</string>
+    <string name="change_server">Change Server URL</string>
+    <string name="save">Save &amp; Reload</string>
+    <string name="cancel">Cancel</string>
+    <string name="exit_prompt">Press BACK again to exit</string>
+</resources>
