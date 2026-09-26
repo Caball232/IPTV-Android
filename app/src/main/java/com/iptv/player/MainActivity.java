@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String PREFS_NAME = "IPTVPlayerPrefs";
     private static final String KEY_SERVER_URL = "server_url";
-    private static final String DEFAULT_URL = "https://architectural-entry-shops-violations.trycloudflare.com";
+    private static final String DEFAULT_URL = "https://discover-accommodate-engineering-performed.trycloudflare.com";
 
     private WebView webView;
     private FrameLayout fullscreenContainer;
