@@ -1,4 +1,4 @@
-# StreamVault Proguard rules
+# IPTV Player Proguard rules
 -keepattributes *Annotation*
 -keepclassmembers class * {
     @android.webkit.JavascriptInterface <methods>;

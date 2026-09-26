@@ -1,13 +1,13 @@
 @echo off
 setlocal
 echo =======================================================
-echo   StreamVault Android & Firestick TV - Push to GitHub
+echo   IPTV Player Android & Firestick TV - Push to GitHub
 echo =======================================================
 echo.
 echo 1. Go to https://github.com/new and create a new repository
-echo    (Can be Public or Private - name it anything, e.g. StreamVault-Android)
+echo    (Can be Public or Private - name it anything, e.g. IPTV-Android)
 echo.
-set /p REPO_URL="Enter your GitHub Repository URL (e.g. https://github.com/Caball232/StreamVault-Android.git): "
+set /p REPO_URL="Enter your GitHub Repository URL (e.g. https://github.com/Caball232/IPTV-Android.git): "
 
 if "%REPO_URL%"=="" (
     echo No URL entered. Exiting.
@@ -19,7 +19,7 @@ echo.
 echo Initializing git, staging files, and committing...
 git init
 git add .
-git commit -m "StreamVault Android & Firestick TV native client v1.0.0" >nul 2>&1
+git commit -m "IPTV Player Android & Firestick TV native client v1.0.0" >nul 2>&1
 git branch -M main
 git remote remove origin >nul 2>&1
 git remote add origin %REPO_URL%
@@ -37,9 +37,9 @@ if %ERRORLEVEL% equ 0 (
     echo Now:
     echo 1. Go to your repo on GitHub: %REPO_URL%
     echo 2. Click on the "Actions" tab at the top.
-    echo 3. You will see "Build StreamVault Firestick & Android APK" running.
+    echo 3. You will see "Build IPTV Player Firestick & Android APK" running.
     echo 4. In ~1 minute, it will finish and produce your downloadable:
-    echo    "StreamVault-FireTV.apk" under Artifacts and GitHub Releases!
+    echo    "IPTVPlayer-FireTV.apk" under Artifacts and GitHub Releases!
     echo.
     echo Firestick Downloader Instructions:
     echo  - In the "Downloader" app on Fire TV, type the direct URL or shortcode

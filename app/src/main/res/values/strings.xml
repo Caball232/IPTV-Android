@@ -1,7 +1,7 @@
 <resources>
-    <string name="app_name">StreamVault</string>
+    <string name="app_name">IPTV Player</string>
     <string name="default_server_url">https://architectural-entry-shops-violations.trycloudflare.com</string>
-    <string name="server_url_prompt">Enter StreamVault Server URL</string>
+    <string name="server_url_prompt">Enter IPTV Player Server URL</string>
     <string name="change_server">Change Server URL</string>
     <string name="save">Save &amp; Reload</string>
     <string name="cancel">Cancel</string>

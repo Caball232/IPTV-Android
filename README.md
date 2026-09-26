@@ -1,6 +1,6 @@
-# 📺 StreamVault - Android & Amazon Firestick TV App
+# 📺 IPTV Player - Android & Amazon Firestick TV App
 
-Universal native Android & Fire TV application client for **StreamVault IPTV**.
+Universal native Android & Fire TV application client for **IPTV Player**.
 
 ## 🌟 Key Features
 - **Leanback Launcher Integration**: Shows up naturally on the Amazon Fire TV and Android TV home screens.
@@ -16,7 +16,7 @@ Universal native Android & Fire TV application client for **StreamVault IPTV**.
 
 1. Run `build_apk_github.bat` or push this repository to GitHub.
 2. Go to the **Actions** tab on your GitHub repository.
-3. Once completed (~1 minute), download **StreamVault-FireTV.apk** from the Release or Artifact section!
+3. Once completed (~1 minute), download **IPTVPlayer-FireTV.apk** from the Release or Artifact section!
 
 ---
 
@@ -32,11 +32,11 @@ The **Downloader** app by AFTVnews is the standard sideloading tool on all Fire 
 
 ### Step 2: Download the APK
 1. Open the **Downloader** app on Firestick.
-2. In the URL / Code box, enter your StreamVault APK URL:
+2. In the URL / Code box, enter your IPTV Player APK URL:
    ```
    https://architectural-entry-shops-violations.trycloudflare.com/download/app.apk
    ```
    *(Or enter your AFTVnews shortcode created via `go.aftvnews.com`)*.
 3. Click **Go**.
 4. The download will start automatically, and Fire OS will prompt **Install**.
-5. Click **Install**, then **Open** to launch StreamVault!
+5. Click **Install**, then **Open** to launch IPTV Player!

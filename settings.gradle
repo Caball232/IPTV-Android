@@ -1,2 +1,2 @@
-rootProject.name = "StreamVault"
+rootProject.name = "IPTVPlayer"
 include ':app'

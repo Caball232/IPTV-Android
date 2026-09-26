@@ -1,4 +1,4 @@
-package com.streamvault.player;
+package com.iptv.player;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
@@ -35,7 +35,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String PREFS_NAME = "StreamVaultPrefs";
+    private static final String PREFS_NAME = "IPTVPlayerPrefs";
     private static final String KEY_SERVER_URL = "server_url";
     private static final String DEFAULT_URL = "https://architectural-entry-shops-violations.trycloudflare.com";
 
@@ -137,7 +137,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Custom TV User-Agent
         String defaultUa = settings.getUserAgentString();
-        settings.setUserAgentString(defaultUa + " StreamVaultApp/1.0 (FireTV; Android)");
+        settings.setUserAgentString(defaultUa + " IPTVPlayerApp/1.0 (FireTV; Android)");
 
         CookieManager.getInstance().setAcceptCookie(true);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {

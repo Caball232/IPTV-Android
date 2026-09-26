@@ -1,4 +1,4 @@
-name: Build StreamVault Firestick & Android APK
+name: Build IPTV Player Firestick & Android APK
 
 on:
   push:
@@ -38,15 +38,15 @@ jobs:
         run: |
           mkdir -p output
           find app/build/outputs/apk -name "*.apk" -exec ls -la {} +
-          cp app/build/outputs/apk/release/app-release.apk output/StreamVault-FireTV.apk 2>/dev/null || \
-          cp app/build/outputs/apk/release/app-release-unsigned.apk output/StreamVault-FireTV.apk 2>/dev/null || \
-          cp app/build/outputs/apk/debug/app-debug.apk output/StreamVault-FireTV.apk
+          cp app/build/outputs/apk/release/app-release.apk output/IPTVPlayer-FireTV.apk 2>/dev/null || \
+          cp app/build/outputs/apk/release/app-release-unsigned.apk output/IPTVPlayer-FireTV.apk 2>/dev/null || \
+          cp app/build/outputs/apk/debug/app-debug.apk output/IPTVPlayer-FireTV.apk
 
       - name: Upload APK Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: StreamVault-FireTV-APK
-          path: output/StreamVault-FireTV.apk
+          name: IPTVPlayer-FireTV-APK
+          path: output/IPTVPlayer-FireTV.apk
           if-no-files-found: error
 
       - name: Create or Update GitHub Release
@@ -54,9 +54,9 @@ jobs:
         if: startsWith(github.ref, 'refs/tags/') || github.ref == 'refs/heads/main'
         with:
           tag_name: v1.0.0
-          name: StreamVault Firestick TV & Android App v1.0.0
+          name: IPTV Player Firestick TV & Android App v1.0.0
           body: |
-            ## 🚀 StreamVault for Firestick & Android TV
+            ## 🚀 IPTV Player for Firestick & Android TV
             
             Universal APK package optimized for Amazon Fire TV Sticks, Fire TV Cubes, and Android devices.
             
@@ -66,6 +66,6 @@ jobs:
             3. Tap **Install** and enjoy!
           draft: false
           prerelease: false
-          files: output/StreamVault-FireTV.apk
+          files: output/IPTVPlayer-FireTV.apk
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

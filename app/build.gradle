@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace 'com.streamvault.player'
+    namespace 'com.iptv.player'
     compileSdk 34
 
     defaultConfig {
-        applicationId "com.streamvault.player"
+        applicationId "com.iptv.player"
         minSdk 21
         targetSdk 34
         versionCode 1
