@@ -31,15 +31,13 @@ jobs:
         run: |
           yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses 2>/dev/null || true
 
-      - name: Build Release & Debug APKs
-        run: ./gradlew assembleRelease --stacktrace
+      - name: Build Universal Fire TV APK
+        run: ./gradlew assembleDebug --stacktrace
 
       - name: Prepare APK Output
         run: |
           mkdir -p output
           find app/build/outputs/apk -name "*.apk" -exec ls -la {} +
-          cp app/build/outputs/apk/release/app-release.apk output/IPTVPlayer-FireTV.apk 2>/dev/null || \
-          cp app/build/outputs/apk/release/app-release-unsigned.apk output/IPTVPlayer-FireTV.apk 2>/dev/null || \
           cp app/build/outputs/apk/debug/app-debug.apk output/IPTVPlayer-FireTV.apk
 
       - name: Upload APK Artifact
@@ -58,7 +56,7 @@ jobs:
           body: |
             ## 🚀 IPTV Player for Firestick & Android TV
             
-            Universal APK package optimized for Amazon Fire TV Sticks, Fire TV Cubes, and Android devices.
+            Universal APK package with v1 & v2 signatures for all Amazon Fire TV devices (Fire OS 5, 6, 7, 8) and Android TVs.
             
             ### 📥 Installation on Firestick:
             1. Open the **Downloader** app on Fire TV.

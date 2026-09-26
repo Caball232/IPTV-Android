@@ -1,6 +1,6 @@
 <resources>
-    <!-- Base Application Theme -->
-    <style name="Theme.IPTVPlayer" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <!-- Base Application Theme: Universal AppCompat for Fire OS 5, 6, 7, 8 and all Android devices -->
+    <style name="Theme.IPTVPlayer" parent="Theme.AppCompat.NoActionBar">
         <item name="colorPrimary">@color/accent_primary</item>
         <item name="android:windowBackground">@color/bg_dark</item>
         <item name="android:statusBarColor">@color/bg_dark</item>
