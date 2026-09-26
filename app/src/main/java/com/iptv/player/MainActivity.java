@@ -343,12 +343,12 @@ public class MainActivity extends AppCompatActivity {
         java.util.Map<String, String> headers = new java.util.HashMap<>();
         headers.put("ngrok-skip-browser-warning", "true");
         headers.put("x-device-mac", getMacAddress());
-        headers.put("x-device-id", getDeviceId());
+        headers.put("x-device-id", getHardwareDeviceId());
         headers.put("x-device-model", getDeviceModel());
         webView.loadUrl(url, headers);
     }
 
-    public String getDeviceId() {
+    public String getHardwareDeviceId() {
         try {
             @SuppressLint("HardwareIds")
             String id = android.provider.Settings.Secure.getString(getContentResolver(), android.provider.Settings.Secure.ANDROID_ID);
@@ -402,7 +402,7 @@ public class MainActivity extends AppCompatActivity {
 
         @android.webkit.JavascriptInterface
         public String getDeviceId() {
-            return MainActivity.this.getDeviceId();
+            return MainActivity.this.getHardwareDeviceId();
         }
 
         @android.webkit.JavascriptInterface
