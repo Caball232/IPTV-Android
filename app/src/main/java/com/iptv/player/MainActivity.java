@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String PREFS_NAME = "IPTVPlayerPrefs";
     private static final String KEY_SERVER_URL = "server_url";
-    private static final String DEFAULT_URL = "https://discover-accommodate-engineering-performed.trycloudflare.com";
+    private static final String DEFAULT_URL = "https://landmass-anointer-lilac.ngrok-free.dev";
 
     private WebView webView;
     private FrameLayout fullscreenContainer;
@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
         configureWebView();
 
         String targetUrl = prefs.getString(KEY_SERVER_URL, DEFAULT_URL);
-        webView.loadUrl(targetUrl);
+        loadServerUrl(targetUrl);
     }
 
     @Override
@@ -326,13 +326,20 @@ public class MainActivity extends AppCompatActivity {
                     newUrl = "http://" + newUrl;
                 }
                 prefs.edit().putString(KEY_SERVER_URL, newUrl).apply();
-                webView.loadUrl(newUrl);
+                loadServerUrl(newUrl);
                 Toast.makeText(MainActivity.this, "Connecting to: " + newUrl, Toast.LENGTH_SHORT).show();
             }
         });
 
         builder.setNegativeButton(R.string.cancel, (dialog, which) -> dialog.cancel());
         builder.show();
+    }
+
+    private void loadServerUrl(String url) {
+        if (webView == null || url == null) return;
+        java.util.Map<String, String> headers = new java.util.HashMap<>();
+        headers.put("ngrok-skip-browser-warning", "true");
+        webView.loadUrl(url, headers);
     }
 
     private void executeJs(String code) {

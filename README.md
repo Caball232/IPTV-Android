@@ -34,7 +34,7 @@ The **Downloader** app by AFTVnews is the standard sideloading tool on all Fire 
 1. Open the **Downloader** app on Firestick.
 2. In the URL / Code box, enter your IPTV Player APK URL:
    ```
-   https://architectural-entry-shops-violations.trycloudflare.com/download/app.apk
+   https://landmass-anointer-lilac.ngrok-free.dev/download/app.apk
    ```
    *(Or enter your AFTVnews shortcode created via `go.aftvnews.com`)*.
 3. Click **Go**.
