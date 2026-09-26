@@ -144,6 +144,9 @@ public class MainActivity extends AppCompatActivity {
             CookieManager.getInstance().setAcceptThirdPartyCookies(webView, true);
         }
 
+        // Attach Hardware Device Bridge for MAC & Device ID Linking
+        webView.addJavascriptInterface(new DeviceBridge(), "DeviceBridge");
+
         webView.setWebViewClient(new WebViewClient() {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
@@ -339,7 +342,78 @@ public class MainActivity extends AppCompatActivity {
         if (webView == null || url == null) return;
         java.util.Map<String, String> headers = new java.util.HashMap<>();
         headers.put("ngrok-skip-browser-warning", "true");
+        headers.put("x-device-mac", getMacAddress());
+        headers.put("x-device-id", getDeviceId());
+        headers.put("x-device-model", getDeviceModel());
         webView.loadUrl(url, headers);
+    }
+
+    public String getDeviceId() {
+        try {
+            @SuppressLint("HardwareIds")
+            String id = android.provider.Settings.Secure.getString(getContentResolver(), android.provider.Settings.Secure.ANDROID_ID);
+            if (id != null && !id.isEmpty()) {
+                return "FS-" + id.toUpperCase();
+            }
+        } catch (Exception ignored) {}
+        return "FS-" + Integer.toHexString(Build.FINGERPRINT.hashCode()).toUpperCase();
+    }
+
+    public String getDeviceModel() {
+        return Build.MANUFACTURER.toUpperCase() + " " + Build.MODEL;
+    }
+
+    public String getMacAddress() {
+        try {
+            java.util.List<java.net.NetworkInterface> interfaces = java.util.Collections.list(java.net.NetworkInterface.getNetworkInterfaces());
+            for (java.net.NetworkInterface nif : interfaces) {
+                if (nif.getName().equalsIgnoreCase("wlan0") || nif.getName().equalsIgnoreCase("eth0")) {
+                    byte[] macBytes = nif.getHardwareAddress();
+                    if (macBytes != null && macBytes.length > 0) {
+                        StringBuilder res = new StringBuilder();
+                        for (byte b : macBytes) {
+                            res.append(String.format("%02X:", b));
+                        }
+                        if (res.length() > 0) res.deleteCharAt(res.length() - 1);
+                        return res.toString();
+                    }
+                }
+            }
+        } catch (Exception ignored) {}
+
+        // Standard IPTV MAG / Stalker persistent MAC fallback derived from Android ID
+        try {
+            @SuppressLint("HardwareIds")
+            String id = android.provider.Settings.Secure.getString(getContentResolver(), android.provider.Settings.Secure.ANDROID_ID);
+            if (id != null && id.length() >= 6) {
+                String sub = id.substring(id.length() - 6).toUpperCase();
+                return String.format("00:1A:79:%s:%s:%s", sub.substring(0, 2), sub.substring(2, 4), sub.substring(4, 6));
+            }
+        } catch (Exception ignored) {}
+
+        return "00:1A:79:B4:C8:10";
+    }
+
+    public class DeviceBridge {
+        @android.webkit.JavascriptInterface
+        public String getMacAddress() {
+            return MainActivity.this.getMacAddress();
+        }
+
+        @android.webkit.JavascriptInterface
+        public String getDeviceId() {
+            return MainActivity.this.getDeviceId();
+        }
+
+        @android.webkit.JavascriptInterface
+        public String getDeviceModel() {
+            return MainActivity.this.getDeviceModel();
+        }
+
+        @android.webkit.JavascriptInterface
+        public boolean isNativeApp() {
+            return true;
+        }
     }
 
     private void executeJs(String code) {
