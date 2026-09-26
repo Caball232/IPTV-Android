@@ -1,0 +1,10 @@
+# Auto detect text files and perform LF normalization
+* text=auto
+
+# Explicitly maintain Unix LF for Linux scripts and Gradle wrapper
+gradlew text eol=lf
+*.sh text eol=lf
+
+# Explicitly maintain Windows CRLF for Windows batch files
+*.bat text eol=crlf
+*.cmd text eol=crlf
