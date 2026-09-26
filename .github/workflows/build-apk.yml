@@ -24,26 +24,22 @@ jobs:
           distribution: 'temurin'
           cache: 'gradle'
 
-      - name: Setup Android SDK
-        uses: android-actions/setup-android@v3
-
       - name: Grant Execute Permission for Gradlew
-        run: |
-          if [ -f gradlew ]; then
-            chmod +x gradlew
-          else
-            gradle wrapper
-            chmod +x gradlew
-          fi
+        run: chmod +x gradlew
 
-      - name: Build Release APK
+      - name: Accept Android SDK Licenses
+        run: |
+          yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses 2>/dev/null || true
+
+      - name: Build Release & Debug APKs
         run: ./gradlew assembleRelease --stacktrace
 
-      - name: Rename & Prepare APK Artifact
+      - name: Prepare APK Output
         run: |
           mkdir -p output
-          cp app/build/outputs/apk/release/app-release-unsigned.apk output/StreamVault-FireTV.apk 2>/dev/null || \
+          find app/build/outputs/apk -name "*.apk" -exec ls -la {} +
           cp app/build/outputs/apk/release/app-release.apk output/StreamVault-FireTV.apk 2>/dev/null || \
+          cp app/build/outputs/apk/release/app-release-unsigned.apk output/StreamVault-FireTV.apk 2>/dev/null || \
           cp app/build/outputs/apk/debug/app-debug.apk output/StreamVault-FireTV.apk
 
       - name: Upload APK Artifact
